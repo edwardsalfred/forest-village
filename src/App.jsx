@@ -3,6 +3,7 @@ import './index.css'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,14 +44,22 @@ function App() {
   return (
     <>
       {/* NAVIGATION */}
-      <nav id="navbar" className={isScrolled ? 'scrolled' : ''}>
+      <nav id="navbar" className={`${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
         <a href="#" className="nav-logo">Forest <span>Village</span></a>
-        <ul className="nav-links">
-          <li><a href="#about" onClick={(e) => handleAnchorClick(e, '#about')}>Vision</a></li>
-          <li><a href="#phases" onClick={(e) => handleAnchorClick(e, '#phases')}>Development</a></li>
-          <li><a href="#market" onClick={(e) => handleAnchorClick(e, '#market')}>Market Data</a></li>
-          <li><a href="#investor" onClick={(e) => handleAnchorClick(e, '#investor')}>Returns</a></li>
-          <li><a href="#contact" className="nav-cta" onClick={(e) => handleAnchorClick(e, '#contact')}>Inquire Now</a></li>
+
+        {/* Hamburger Icon */}
+        <div className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+          <li><a href="#about" onClick={(e) => { handleAnchorClick(e, '#about'); setIsMobileMenuOpen(false); }}>Vision</a></li>
+          <li><a href="#phases" onClick={(e) => { handleAnchorClick(e, '#phases'); setIsMobileMenuOpen(false); }}>Development</a></li>
+          <li><a href="#market" onClick={(e) => { handleAnchorClick(e, '#market'); setIsMobileMenuOpen(false); }}>Market Data</a></li>
+          <li><a href="#investor" onClick={(e) => { handleAnchorClick(e, '#investor'); setIsMobileMenuOpen(false); }}>Returns</a></li>
+          <li><a href="#contact" className="nav-cta" onClick={(e) => { handleAnchorClick(e, '#contact'); setIsMobileMenuOpen(false); }}>Inquire Now</a></li>
         </ul>
       </nav>
 
@@ -66,7 +75,7 @@ function App() {
               <span className="overline-line"></span>
               Jackson, Mississippi — Now Pre-Leasing
             </div>
-            <h1>A Community<br/><em>Destination,</em><br/>Purpose-Built.</h1>
+            <h1>A Community<br /><em>Destination,</em><br />Purpose-Built.</h1>
             <p className="subtitle">Forest Village is a 3.5-acre, two-building mixed-use development at Forest Avenue & Watkins Drive — designed to serve the daily, weekly, and recurring needs of 55,000+ residents in one of Jackson's highest-need corridors.</p>
             <div className="hero-buttons">
               <a href="#contact" className="btn-primary" onClick={(e) => handleAnchorClick(e, '#contact')}>Request Site Package →</a>
@@ -151,7 +160,7 @@ function App() {
           <div className="about-content">
             <div className="section-header">
               <div className="section-overline"><span className="overline-line"></span> The Vision</div>
-              <h2 className="section-title">More Than a <em>Development.</em><br/>A Neighborhood Hub.</h2>
+              <h2 className="section-title">More Than a <em>Development.</em><br />A Neighborhood Hub.</h2>
               <p className="section-desc">ZIP code 39206 is one of Jackson's most underserved corridors — high population density, limited retail options, and virtually no urgent care access. Forest Village addresses these gaps with a deliberately curated tenant mix that generates traffic from morning to night, weekday through weekend.</p>
             </div>
             <div className="about-features">
@@ -360,7 +369,7 @@ function App() {
       {/* CTA */}
       <section className="cta-section" id="contact">
         <div className="cta-content">
-          <h2>Ready to Be Part of<br/><em>Forest Village?</em></h2>
+          <h2>Ready to Be Part of<br /><em>Forest Village?</em></h2>
           <p>Whether you're a tenant, investor, franchise operator, or healthcare system — we want to hear from you. Pre-leasing is active and spaces are limited.</p>
           <div className="cta-buttons">
             <a href="mailto:nash1161949@gmail.com" className="btn-primary">Request Site Package →</a>
