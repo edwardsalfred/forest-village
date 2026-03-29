@@ -28,6 +28,47 @@
     overflow-x: hidden;
   }
 
+  /* === SKIP LINK (Accessibility) === */
+  .skip-link {
+    position: absolute;
+    top: -60px;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--forest-deep);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 9999;
+    border-radius: 0 0 4px 4px;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* === FOCUS STYLES (Keyboard Navigation) === */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* === REDUCED MOTION === */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   /* === NAVIGATION === */
   nav {
     position: fixed;
@@ -105,6 +146,13 @@
     cursor: pointer;
     z-index: 1001;
     /* Above mobile menu */
+    background: none;
+    border: none;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-menu-btn span {
@@ -347,7 +395,7 @@
 
   .stats-card .location {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 2rem;
     letter-spacing: 0.05em;
   }
@@ -373,7 +421,7 @@
 
   .stat-label {
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 0.3rem;
@@ -491,7 +539,7 @@
 
   .section-desc {
     font-size: 1.05rem;
-    color: #666;
+    color: #555;
     line-height: 1.7;
     font-weight: 300;
   }
@@ -610,7 +658,7 @@
 
   .feature-text p {
     font-size: 0.82rem;
-    color: #777;
+    color: #555;
     line-height: 1.5;
   }
 
@@ -703,7 +751,7 @@
 
   .phase-sqft {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.65);
     margin-bottom: 1.8rem;
   }
 
@@ -745,7 +793,7 @@
 
   .tenant-info p {
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.65);
     margin-top: 0.15rem;
   }
 
@@ -795,7 +843,7 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #999;
+    color: #5a5a5a;
     margin-top: 0.6rem;
   }
 
@@ -887,7 +935,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #999;
+    color: #5a5a5a;
     margin-bottom: 0.5rem;
   }
 
@@ -901,7 +949,7 @@
 
   .return-card .metric-desc {
     font-size: 0.82rem;
-    color: #777;
+    color: #555;
     line-height: 1.5;
   }
 
@@ -983,7 +1031,7 @@
 
   .impact-card p {
     font-size: 0.85rem;
-    color: #777;
+    color: #555;
     line-height: 1.6;
   }
 
@@ -1050,7 +1098,8 @@
     flex-wrap: wrap;
   }
 
-  .cta-contact a {
+  .cta-contact a,
+  .cta-contact span {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     font-size: 0.85rem;
@@ -1085,7 +1134,7 @@
 
   footer p {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   /* === RESPONSIVE === */
@@ -1132,6 +1181,8 @@
 
     .mobile-menu-btn {
       display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .nav-links {
